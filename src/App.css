@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.libri {
+  border: 1px solid aqua;
+}
+.libri:hover {
+  transform: scale(1.1);
+}
+
+.arrowup {
+  position: fixed;
+  bottom: 25px;
+  right: 50px;
+  font-size: 50px;
+}
