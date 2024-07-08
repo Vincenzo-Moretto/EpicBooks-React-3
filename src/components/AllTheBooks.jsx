@@ -6,36 +6,16 @@ import horror from "../data/horror.json";
 import romance from "../data/romance.json";
 import scifi from "../data/scifi.json"; */
 
-import { Form, Row } from "react-bootstrap";
-import { useState } from "react";
-
-function AllTheBooks() {
-  const [state, setState] = useState("");
-
-  const filterBookList = (e) => {
-    setState(e.target.value);
-  };
-
+function AllTheBooks({ searchQuery, darkMode }) {
   const arrowup = () => {
     window.location.href = "#";
   };
 
   return (
     <>
-      <Row>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Carca un libro</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Signore degli anelli, Lo Hobbit..."
-            value={state}
-            onChange={filterBookList}
-          />
-        </Form.Group>
-      </Row>
-      <div className="d-flex justify-content-center flex-wrap gap-5 my-5 pb-5">
+      <div className={`d-flex justify-content-center flex-wrap gap-5 my-5 pb-5 ${darkMode ? "" : ""}`}>
         {[...fantasy /*  ...history, ...horror, ...romance, ...scifi */]
-          .filter((libro) => libro.title.toLowerCase().includes(state.toLocaleLowerCase()))
+          .filter((libro) => libro.title.toLowerCase().includes(searchQuery))
           .map((libro) => (
             <SingleBook key={libro.asin} libro={libro} />
           ))}
